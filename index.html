@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rubab's Digital — API Platform</title>
+  <meta name="description" content="Rubab's Digital API Platform — 13 production services: 7 backend APIs and 6 frontend sites. Real-time news, AI text tools, finance data, security intelligence, e-commerce and more." />
+  <meta property="og:title" content="Rubab's Digital API Platform" />
+  <meta property="og:description" content="13 production services — 7 backend APIs + 6 frontend sites. Built and deployed on the edge." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310b981'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%23071a12'%3ER%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --bg-grad-1: #0d1f18;
+      --bg-grad-2: #0a0a0f;
+      --surface: #131316;
+      --surface-2: #17171c;
+      --surface-hover: #1c1c23;
+      --border: #26262e;
+      --divider: #1d1d23;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --accent: #10b981;
+      --accent-2: #34d399;
+      --accent-glow: rgba(16, 185, 129, 0.35);
+      --cyan: #22d3ee;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --max: 1180px;
+      --nav-h: 64px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ===== Navbar ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      background: rgba(10, 10, 11, 0.82);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--divider);
+    }
+    .nav-inner {
+      width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.65rem; font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; flex-shrink: 0; }
+    .brand .logo {
+      width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #071a12; font-weight: 800; font-size: 1.05rem;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .brand .tag { color: var(--text-dim); font-weight: 500; font-size: 0.82rem; border-left: 1px solid var(--border); padding-left: 0.65rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.6rem; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: color 160ms; white-space: nowrap; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.05rem; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #071a12; font-weight: 700; font-size: 0.86rem; white-space: nowrap;
+      transition: transform 160ms, box-shadow 160ms;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px var(--accent-glow); }
+    .nav-toggle {
+      display: none; width: 42px; height: 42px; align-items: center; justify-content: center;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text-muted); font-size: 1.2rem; cursor: pointer;
+    }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; padding: calc(var(--nav-h) + 5rem) 0 4rem; text-align: center; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(60% 55% at 50% 0%, var(--bg-grad-1) 0%, transparent 70%),
+        radial-gradient(40% 40% at 80% 10%, rgba(34, 211, 238, 0.08) 0%, transparent 70%),
+        var(--bg-grad-2);
+    }
+    .hero .pill {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;
+      padding: 0.4rem 0.9rem; border-radius: 999px;
+      background: rgba(16, 185, 129, 0.09); border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--accent-2); font-size: 0.8rem; font-weight: 600;
+    }
+    .hero .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 var(--accent-glow); animation: pulse 2s infinite; }
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 3.7rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+      background: linear-gradient(180deg, #ffffff 0%, #b9c2bd 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 45%, var(--cyan) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p.sub { max-width: 620px; margin: 1.25rem auto 0; color: var(--text-muted); font-size: clamp(1rem, 2.4vw, 1.15rem); }
+    .hero .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.25rem; }
+    .stat {
+      display: flex; flex-direction: column; align-items: center; min-width: 118px;
+      padding: 1rem 1.4rem; border-radius: var(--radius-md);
+      background: var(--surface); border: 1px solid var(--border);
+    }
+    .stat b { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .stat span { font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.15rem; }
+
+    /* ===== Sections ===== */
+    section.block { padding: 3.5rem 0; }
+    .section-head { margin-bottom: 2rem; }
+    .section-head .eyebrow { color: var(--accent-2); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    .section-head h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-top: 0.4rem; }
+    .section-head p { color: var(--text-muted); margin-top: 0.5rem; max-width: 640px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+
+    /* ===== Cards ===== */
+    .card {
+      position: relative; display: flex; flex-direction: column;
+      padding: 1.5rem; border-radius: var(--radius-lg);
+      background: var(--surface); border: 1px solid var(--border);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      overflow: hidden;
+    }
+    .card::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      background: radial-gradient(120% 90% at 100% 0%, var(--card-tint, rgba(16,185,129,0.10)) 0%, transparent 55%);
+      opacity: 0; transition: opacity 200ms;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--card-border, rgba(16,185,129,0.4)); background: var(--surface-hover); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+    .card:hover::after { opacity: 1; }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+    .icon {
+      width: 46px; height: 46px; border-radius: var(--radius-md); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
+      background: var(--card-tint, rgba(16,185,129,0.12)); border: 1px solid var(--card-border, rgba(16,185,129,0.25));
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.28rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700;
+      background: rgba(16, 185, 129, 0.12); color: var(--accent-2); border: 1px solid rgba(16, 185, 129, 0.28);
+      text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;
+    }
+    .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); animation: pulse 2s infinite; }
+    .card h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; margin-top: 1.1rem; }
+    .card .desc { color: var(--text-muted); font-size: 0.92rem; margin-top: 0.5rem; flex: 1; }
+    .card .link {
+      display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.25rem;
+      font-size: 0.88rem; font-weight: 600; color: var(--accent-2);
+      transition: gap 160ms;
+    }
+    .card .link:hover { gap: 0.75rem; }
+    .card .link .arrow { transition: transform 160ms; }
+    .card:hover .link .arrow { transform: translateX(3px); }
+    .card .url { display: block; margin-top: 0.6rem; font-size: 0.76rem; color: var(--text-dim); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+    .card.full-link::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .card.full-link .link, .card.full-link .icon, .card.full-link .badge { position: relative; z-index: 2; }
+
+    /* ===== Footer ===== */
+    footer { border-top: 1px solid var(--divider); padding: 2.5rem 0; margin-top: 2rem; }
+    .foot-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    footer .brand { font-size: 0.95rem; }
+    footer .foot-links { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+    footer .foot-links a { color: var(--text-muted); font-size: 0.88rem; transition: color 160ms; }
+    footer .foot-links a:hover { color: var(--accent-2); }
+    footer .copy { color: var(--text-dim); font-size: 0.82rem; width: 100%; margin-top: 0.5rem; }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+      70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: var(--surface); border-bottom: 1px solid var(--divider);
+        padding: 0.5rem 1.25rem 1rem;
+        transform: translateY(-140%); transition: transform 240ms ease; opacity: 0; pointer-events: none;
+      }
+      .nav-links a { padding: 0.9rem 0; border-bottom: 1px solid var(--divider); font-size: 0.98rem; }
+      .nav-links .nav-cta { margin-top: 0.75rem; justify-content: center; padding: 0.85rem; border-bottom: none; }
+      #navToggle:checked ~ .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav-toggle { display: inline-flex; }
+    }
+    #navToggle { display: none; }
+    @media (min-width: 861px) { .nav-toggle { display: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="logo">R</span>
+        <span>Rubab's Digital</span>
+        <span class="tag">API Platform</span>
+      </a>
+      <input type="checkbox" id="navToggle" />
+      <label for="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</label>
+      <div class="nav-links">
+        <a href="https://rubabsdigital.com" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="#backend">Backend APIs</a>
+        <a href="#frontend">Frontend Sites</a>
+        <a href="https://rubab-api-hub.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">API Hub</a>
+        <a href="https://rubabsdigital.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Visit rubabsdigital.com →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="pill"><span class="dot"></span> 13 services live on the edge</span>
+      <h1>Rubab's Digital <span class="grad">API Platform</span></h1>
+      <p class="sub">One home for every API and product we ship — 7 production backend APIs and 6 polished frontend sites, all deployed globally on Cloudflare's edge network.</p>
+      <div class="stats">
+        <div class="stat"><b>13</b><span>Services</span></div>
+        <div class="stat"><b>7</b><span>Backend APIs</span></div>
+        <div class="stat"><b>6</b><span>Frontends</span></div>
+        <div class="stat"><b>100%</b><span>Edge Hosted</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== BACKEND APIS ===== -->
+    <section class="block" id="backend">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Backend APIs</span>
+          <h2>7 production APIs</h2>
+          <p>Fast, documented, edge-deployed REST APIs powering data, intelligence and automation.</p>
+        </div>
+        <div class="grid">
+
+          <a class="card full-link" style="--card-tint:rgba(16,185,129,0.12);--card-border:rgba(16,185,129,0.4)" href="https://rubabapi-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🛒</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>RubabAPI</h3>
+            <p class="desc">API marketplace with 25 categories, a provider/consumer model, and built-in usage metering.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">rubabapi-api.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(34,211,238,0.12);--card-border:rgba(34,211,238,0.4)" href="https://newsapi.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">📰</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>NewsAPI</h3>
+            <p class="desc">Real-time news ingestion from 61 RSS sources with full-text search across every article.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">newsapi.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(239,68,68,0.12);--card-border:rgba(239,68,68,0.4)" href="https://cyberguard-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🛡️</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>CyberGuard</h3>
+            <p class="desc">Security intelligence: IP threat scoring, domain reputation, breach checks and SSL inspection.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">cyberguard-api.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(245,158,11,0.12);--card-border:rgba(245,158,11,0.4)" href="https://financeflow-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">💹</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>FinanceFlow</h3>
+            <p class="desc">Financial data at your fingertips: forex, crypto, stocks, plus a suite of calculators.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">financeflow-api.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(139,92,246,0.12);--card-border:rgba(139,92,246,0.4)" href="https://smarttext-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">✨</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>SmartText</h3>
+            <p class="desc">AI text toolkit: summarization, sentiment analysis, translation and keyword extraction.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">smarttext-api.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(236,72,153,0.12);--card-border:rgba(236,72,153,0.4)" href="https://socialpulse-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">📊</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>SocialPulse</h3>
+            <p class="desc">Social analytics: trending topics, profile insights, hashtag data and a post scheduler.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">socialpulse-api.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(20,184,166,0.12);--card-border:rgba(20,184,166,0.4)" href="https://shopradar-api.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🔎</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>ShopRadar</h3>
+            <p class="desc">E-commerce intelligence: product search, cross-store price comparison and live deals.</p>
+            <span class="link">Open API <span class="arrow">→</span></span>
+            <span class="url">shopradar-api.rdceojony.workers.dev</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRONTEND SITES ===== -->
+    <section class="block" id="frontend">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Frontend Sites</span>
+          <h2>6 live frontends</h2>
+          <p>Production web experiences built on top of the platform — dashboards, marketplaces and marketing.</p>
+        </div>
+        <div class="grid">
+
+          <a class="card full-link" style="--card-tint:rgba(16,185,129,0.12);--card-border:rgba(16,185,129,0.4)" href="https://rubab-api-hub.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🌐</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>API Hub</h3>
+            <p class="desc">The master showcase — a single directory linking to every API and product on the platform.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">rubab-api-hub.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(34,211,238,0.12);--card-border:rgba(34,211,238,0.4)" href="https://rubabapi-web.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🏪</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>RubabAPI Web</h3>
+            <p class="desc">The full marketplace frontend — 25 pages for browsing, buying and managing APIs.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">rubabapi-web.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(59,130,246,0.12);--card-border:rgba(59,130,246,0.4)" href="https://newsapi-web.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🗞️</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>NewsAPI Web</h3>
+            <p class="desc">A clean news-reading frontend across 19 pages, powered by the NewsAPI backend.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">newsapi-web.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(245,158,11,0.12);--card-border:rgba(245,158,11,0.4)" href="https://rubab-api-pages.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">🚀</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>API Landing Pages</h3>
+            <p class="desc">Conversion-focused marketing landing pages for 5 flagship products.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">rubab-api-pages.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(139,92,246,0.12);--card-border:rgba(139,92,246,0.4)" href="https://api-dashboards.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">📈</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>API Dashboards</h3>
+            <p class="desc">7 premium analytics dashboards spanning 44 routes for monitoring every service.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">api-dashboards.rdceojony.workers.dev</span>
+          </a>
+
+          <a class="card full-link" style="--card-tint:rgba(148,163,184,0.14);--card-border:rgba(148,163,184,0.45)" href="https://ghostops-ui.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><div class="icon">👻</div><span class="badge"><span class="dot"></span>Live</span></div>
+            <h3>GhostOps UI</h3>
+            <p class="desc">The GhostOps premium operations interface — 32 pages of tooling and controls.</p>
+            <span class="link">Visit site <span class="arrow">→</span></span>
+            <span class="url">ghostops-ui.rdceojony.workers.dev</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap foot-inner">
+      <a href="https://rubabsdigital.com" target="_blank" rel="noopener noreferrer" class="brand">
+        <span class="logo">R</span> Rubab's Digital
+      </a>
+      <div class="foot-links">
+        <a href="https://rubabsdigital.com" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="#backend">Backend APIs</a>
+        <a href="#frontend">Frontend Sites</a>
+        <a href="https://rubab-api-hub.rdceojony.workers.dev" target="_blank" rel="noopener noreferrer">API Hub</a>
+      </div>
+      <p class="copy">© <span id="year">2026</span> Rubab's Digital — API Platform. Built and deployed on the edge.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    // Close the mobile menu after tapping a link
+    document.querySelectorAll(".nav-links a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        document.getElementById("navToggle").checked = false;
+      });
+    });
+  </script>
+</body>
+</html>

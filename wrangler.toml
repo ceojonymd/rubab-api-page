@@ -1,0 +1,10 @@
+name = "rubab-api-page"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+account_id = "655dab90e1203e3c6db3743198c18f60"
+workers_dev = true
+
+# Import *.html files as text strings so worker.js can return index.html directly.
+rules = [
+  { type = "Text", globs = ["**/*.html"], fallthrough = false }
+]

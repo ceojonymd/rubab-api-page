@@ -29,14 +29,7 @@ Single source of truth: [`index.html`](./index.html) (self-contained — no buil
 
 ## Deployment
 
-This one page is deployed two ways from the same `index.html`:
-
-### Vercel (primary)
-Static deploy — `vercel.json` sets `framework: null` and serves `index.html` at `/`.
-Push to `main` and Vercel auto-deploys the connected project.
-
-### Cloudflare Workers (backup)
-`worker.js` imports `index.html` as a text module (see the `[Text]` rule in `wrangler.toml`) and returns it.
+Deployed as a Cloudflare Worker. `worker.js` imports `index.html` as a text module (see the `[Text]` rule in `wrangler.toml`) and returns it.
 
 ```bash
 # Requires CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID in the environment
@@ -44,7 +37,7 @@ npm install
 npm run deploy   # wrangler deploy
 ```
 
-Deployed worker: `rubab-api-page` → https://rubab-api-page.<account>.workers.dev
+Deployed worker: `rubab-api-hub` → https://rubab-api-hub.rdceojony.workers.dev
 
 ## Local preview
 Just open `index.html` in a browser, or `npm run dev` for the Worker dev server.

@@ -1,4 +1,4 @@
-name = "rubab-api-page"
+name = "rubab-api-hub"
 main = "worker.js"
 compatibility_date = "2025-01-01"
 account_id = "655dab90e1203e3c6db3743198c18f60"

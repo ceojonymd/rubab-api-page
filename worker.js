@@ -10,6 +10,10 @@ export default {
         "content-type": "text/html; charset=utf-8",
         "cache-control": "public, max-age=3600",
         "x-content-type-options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
       },
     });
   },
